@@ -194,7 +194,7 @@ if (isset($_REQUEST["check"])) {
    Aus dem Ausschlu&szlig; w&auml;hrend des Camps ergibt sich kein R&uuml;ckzahlungsanspruch des
    Teilnahmebeitrags.</p>
   <p>Weitere Anmerkungen:</p>
-  <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT | ENT_HTML401, "UTF8"); ?></textarea>
+  <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT, "UTF-8"); ?></textarea>
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
   -->

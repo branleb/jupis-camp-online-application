@@ -192,7 +192,7 @@ if (isset($_REQUEST["check"])) {
    willingly disrupt camp order on multiple occasions, I<!-- /it --> can be sent home at own costs.
    Payments on account will not be refunded.</p>
   <p>Former notes:</p>
-  <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT | ENT_HTML401, "UTF8"); ?></textarea>
+  <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT, "UTF-8"); ?></textarea>
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> My child is allowed to swim without supervision
   -->
