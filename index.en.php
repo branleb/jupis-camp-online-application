@@ -57,7 +57,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Essenswunsch"] = $ernaehrung;
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
-		file_put_contents("temp/" . $rand . ".fdf", create_fdf($fdf, $fdf_opt));
+		file_put_contents("temp/" . $rand . ".fdf", Util::create_fdf($fdf, $fdf_opt));
 		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Application.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
