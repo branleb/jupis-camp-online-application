@@ -120,7 +120,7 @@ if (false) {
 }
 if (isset($_REQUEST["check"])) {
 ?>
-<p>Please check the <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">created Application</a> for mistakes<a href="?mail">continue</a>.</p>
+<p>Please check the <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">created Application</a> for mistakes and <a href="?mail">continue</a>.</p>
 <?php
 } else if (isset($_REQUEST["finished"])) {
 ?>
