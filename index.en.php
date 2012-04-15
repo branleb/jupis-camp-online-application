@@ -28,17 +28,17 @@ if (isset($_POST["send"])) {
 	$anmerkungen = Util::val("anmerkungen");
 
 	if (trim($name) == "") {
-		Util::handle_error("Das Feld \"Name\" muss ausgef&uuml;lt sein.");
+		Util::handle_error("The Field \"Name\" must be completed.");
 	} else if (trim($anschrift) == "") {
-		Util::handle_error("Das Feld \"Anschrift\" muss ausgef&uuml;lt sein.");
+		Util::handle_error("The Field \"Address\"  must be completed.");
 	} else if (trim($wohnort) == "") {
-		Util::handle_error("Das Feld \"Wohnort\" muss ausgef&uuml;lt sein.");
+		Util::handle_error("The Field \"Residence\"  must be completed.");
 	} else if (trim($mailadresse) == "") {
-		Util::handle_error("Das Feld \"Mailadresse\" muss ausgef&uuml;lt sein.");
+		Util::handle_error("The Field \"E-Mail Address\"  must be completed.");
 	} else if ($geburtsdatum == 0) {
-		Util::handle_error("Das Feld \"Geburtsdatum\" muss ausgef&uuml;lt sein.");
+		Util::handle_error("The Field \"Date of Birth\"  must be completed.");
 	} else if ($geburtsdatum > mktime(0,0,0,date("n"),date("j"),date("Y")-18)) {
-		Util::handle_error("Dieses Anmeldeformular ist nur f&uuml;r vollj&auml;hrige Teilnehmer.");
+		Util::handle_error("This Form is not intended to be used by minors due to legal issues.");
 	} else {
 		$rand = rand(10000,99999) . "-" . md5(microtime());
 		$fdf = array();
@@ -58,7 +58,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
 		file_put_contents("temp/" . $rand . ".fdf", create_fdf($fdf, $fdf_opt));
-		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf"));
+		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Application.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
 		$_SESSION["data"] = $fdf;
@@ -78,7 +78,7 @@ if (isset($_REQUEST["mail"])) {
 	$body .= "--{$seperator}" . "\r\n";
 	$body .= "Content-Type: text/plain; charset=utf-8" . "\r\n";
 	$body .= "" . "\r\n";
-	$body .= "Schau in den Anhang - diese Anmeldung kam per Webformular ;)" . "\r\n";
+	$body .= "Schau in den Anhang - diese Anmeldung kam per englischem Webformular ;)" . "\r\n";
 	$body .= print_r($_SESSION["data"], true) . "\r\n";
 	$body .= print_r($_SESSION["options"], true) . "\r\n";
 	$body .= "" . "\r\n";
@@ -90,7 +90,7 @@ if (isset($_REQUEST["mail"])) {
 	$body .= chunk_split(base64_encode(file_get_contents("temp/" . $_SESSION["rand"] . ".pdf"))) . "\r\n";
 	$body .= "--{$seperator}--" . "\r\n";
 	unlink("temp/" . $_SESSION["rand"] . ".pdf");
-	mail("camp@junge-piraten.de", "Neue Camp-Anmeldung", $body, $headers);
+	mail("camp@junge-piraten.de", "Neue (internationale) Camp-Anmeldung", $body, $headers);
 
 	header("Location: ?finished");
 }
@@ -99,7 +99,7 @@ header("Content-Type: text/html; charset=utf-8");
 ?>
 <html>
 <head>
-<title>Anmeldung zum JuPi-Camp 2012</title>
+<title>Application for JuPi-Camp 2012</title>
 <style type="text/css">
 body {font-family:sans-serif; margin:15px; background:gray;}
 fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
@@ -115,23 +115,23 @@ body>p {background:white; width:900px; margin: 0px auto 20px auto; border:2px so
 <?php
 if (false) {
 ?>
-<div class="error"><strong>Achtung!</strong> Dieses Formular ist noch nicht produktiv, sondern bisher nur zum Testen vorgesehen!</div>
+<div class="error"><strong>Attention!</strong> This form is not intended for production use. It exists only for testing purposes!</div>
 <?php
 }
 if (isset($_REQUEST["check"])) {
 ?>
-<p>Bitte kontrolliere die <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">erzeugte Anmeldung</a> auf Fehler und <a href="?mail">fahre fort</a>.</p>
+<p>Please check the <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">created Application</a> for mistakes<a href="?mail">continue</a>.</p>
 <?php
 } else if (isset($_REQUEST["finished"])) {
 ?>
-<p>Deine Anmeldung wurde eingereicht. Du wirst eine Anmeldebest&auml;tigung erhalten, sobald deine Anmeldung bearbeitet wird. Wir sehen uns im Sommer!</p>
+<p>Your Application has been filed. You'll receive a confirmation once your application has been processed!</p>
 <?php
 } else {
 ?>
-<p>Diese Online-Anmeldung gilt nur f&uuml;r vollj&auml;hrige Camp-Teilnehmer. Solltest du 
- minderj&auml;hrig sein oder die Online-Anmeldung nicht benutzen wollen, verschicke die
+<p>This online application is not valid for minots. If you're a minor or in case you don&apos;t
+ like to use this online application you should send this
  <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf">
- Anmeldung</a> als Brief oder Fax.</p>
+ application</a> by letter or fax.</p>
 <?php
 	foreach (Util::get_errors() as $err) {
 		echo "<div class=\"error\">" . $err . "</div>";
@@ -141,75 +141,73 @@ if (isset($_REQUEST["check"])) {
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
   <h1>Junge Piraten</h1>
-  <p>Anmeldung zum Camp 2012</p>
-  <p>Hiermit melde ich mich <!-- / mein Kind --></p>
+  <p>Application for Camp 2012</p>
+  <p>I hereby bindingly register myself<!-- / mein Kind --></p>
   <dl>
-   <dt>Name:</dt>
+   <dt>Full Name:</dt>
    <dd><input type="text" name="name" value="<?php echo Util::val("name"); ?>" size="20" /></dd>
    <dt>Nick:</dt>
    <dd><input type="text" name="nick" value="<?php echo Util::val("nick"); ?>" size="20" /></dd>
-   <dt>Anschrift:</dt>
+   <dt>Address:</dt>
    <dd><input type="text" name="anschrift" value="<?php echo Util::val("anschrift"); ?>" size="40" /></dd>
-   <dt>Wohnort:</dt>
+   <dt>Residence:</dt>
    <dd><input type="text" name="wohnort" value="<?php echo Util::val("wohnort"); ?>" size="40" /></dd>
-   <dt>Mailadresse:</dt>
+   <dt>E-Mail Address:</dt>
    <dd><input type="text" name="mailadresse" value="<?php echo Util::val("mailadresse"); ?>" size="40" /></dd>
-   <dt>Geburtsdatum:</dt>
+   <dt>Date of Birth:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>zum Camp der Jungen Piraten 2012 in 49377 Vechta (Niedersachsen) vom 5. bis zum
-   12. August verbindlich an. Die Campteilnahme kostet 75 Euro. In diesem Preis enthalten
-   sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser,
-   Kaffee und Tee. Weitere nichtalkoholische Getr&auml;nke sind vor Ort zum Selbstkostenpreis zu
-   erwerben. Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
-   Risiko.</p>
-  <p>Im Notfall soll</p>
+  <p>for Junge Piraten Camp 2011 in 49377 Vechta (Lower Saxony) from August 5<sup>th</sup> to 12<sup>th</sup>.
+   Participation fee is 75 &euro;, including room and board (breakfast, lunch, dinner as well as water, coffee &amp; tea).
+   Other non-alcoholic drinks can be purchased at the campsite at cost price. Travel to and from has to be paid
+   individually by the attendees.</p>
+  <p>In case of emergency please contact:</p>
   <dl>
    <dt>Name:</dt>
    <dd><input type="text" name="notfallname" value="<?php echo Util::val("notfallname"); ?>" size="40" /></dd>
-   <dt>Telefonnummer:</dt>
+   <dt>Phone:</dt>
    <dd><input type="text" name="notfallnummer" value="<?php echo Util::val("notfallnummer"); ?>" size="40" /></dd>
   </dl>
-  <p>informiert werden.</p>
+  <p>&nbsp;</p>
  </fieldset>
  <fieldset>
-  <p>Spezielle Essensw&uuml;nsche:</p>
+  <p>Special food requirements:</p>
   <p>
-   <input type="radio" name="ernaehrung" value="alles" <?php if (Util::val_checked("ernaehrung", "alles")) { echo "checked=\"checked\""; } ?> /> Alles
-   <input type="radio" name="ernaehrung" value="vegi" <?php if (Util::val_checked("ernaehrung", "vegi")) { echo "checked=\"checked\""; } ?> /> Vegetarisch
-   <input type="radio" name="ernaehrung" value="vegan" <?php if (Util::val_checked("ernaehrung", "vegan")) { echo "checked=\"checked\""; } ?> /> Vegan
+   <input type="radio" name="ernaehrung" value="alles" <?php if (Util::val_checked("ernaehrung", "alles")) { echo "checked=\"checked\""; } ?> /> everything
+   <input type="radio" name="ernaehrung" value="vegi" <?php if (Util::val_checked("ernaehrung", "vegi")) { echo "checked=\"checked\""; } ?> /> vegetarian
+   <input type="radio" name="ernaehrung" value="vegan" <?php if (Util::val_checked("ernaehrung", "vegan")) { echo "checked=\"checked\""; } ?> /> vegan
   </p>
   <p>
-   <input type="checkbox" name="unvertraeglichkeiten" <?php if (Util::val_checked("unvertraeglichkeiten")) { echo "checked=\"checked\""; } ?> />Lebensmittelunvertr&auml;glichkeiten:
+   <input type="checkbox" name="unvertraeglichkeiten" <?php if (Util::val_checked("unvertraeglichkeiten")) { echo "checked=\"checked\""; } ?> />Food intolerances:
    <input type="text" name="unvertraeglichkeiten2" value="<?php echo Util::val("unvertraeglichkeiten2"); ?>" size="40" />
   </p>
-  <p>Bekannte Allergien:</p>
+  <p>Known Allergies:</p>
   <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
-  <p>Mir ist bewusst, dass bei einer Stornierung der Campteilnahme 25 % des
-   Teilnahmebeitrags (18,75 &euro;) f&auml;llig werden. Bei einer Stornierung weniger als 5 Tage vor
-   Campbeginn werden 75 % (56,25 &euro;) f&auml;llig.</p>
-  <p>Au&szlig;erdem ist mir bewusst, dass ich<!-- / mein Kind -->, sofern ich mich<!-- / es sich --> mehrfach den
-   Anweisungen des Aufsichtspersonals widersetze<!-- / widersetzt --> und die Campordnung
-   mutwillig st&ouml;re<!-- / st&ouml;rt -->, auf eigene Kosten nach Hause geschickt werden kann.<br />
-   Aus dem Ausschlu&szlig; w&auml;hrend des Camps ergibt sich kein R&uuml;ckzahlungsanspruch des
-   Teilnahmebeitrags.</p>
-  <p>Weitere Anmerkungen:</p>
+  <p>I am aware that there is a cancellation fee of 25% of the original participation cost (18,75 &euro;),
+   which will rise to 75% (56,25 &euro;) in case of rescession five days or less prior to begin.
+	</p>
+
+	<p>
+   I am further aware that if I <!-- or my child --> do not follow the directions of the supervisory staff and/or
+   willingly disrupt camp order on multiple occasions, I<!-- /it --> can be sent home at own costs.
+   Payments on account will not be refunded.</p>
+  <p>Former notes:</p>
   <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT | ENT_HTML401, "UTF8"); ?></textarea>
   <!--
-   <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
+   <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> My child is allowed to swim without supervision
   -->
-  <p>Den Teilnahmebeitrag von 75 &euro; &uuml;berweise ich bis zum 5. Juli 2012 auf folgendes Konto:</p>
+  <p>Please transfer the application fee of 75€ to the following bank account until June 5<sup>th</sup> 2012:</p>
   <dl class="konto">
-   <dt>Kontoinhaber:</dt>
+   <dt>Account Holder:</dt>
    <dd>Junge Piraten</dd>
-   <dt>Kontonummer:</dt>
-   <dd>6016506900</dd>
-   <dt>Bank:</dt>
+   <dt>Name of Bank:</dt>
    <dd>GLS Gemeinschaftsbank</dd>
-   <dt>Bankleitzahl:</dt>
-   <dd>43060967</dd>
-   <dt>&Uuml;berweisungszweck:</dt>
-   <dd>JuPi-Camp 2012 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
+   <dt>IBAN:</dt>
+   <dd>DE76 4306 0967 6016 5069 00</dd>
+   <dt>BIC:</dt>
+   <dd>GENODEM1GLS</dd>
+   <dt>Reason for Payment:</dt>
+   <dd>JuPi-Camp <i>&lt;family name&gt;</i>, <i>&lt;given name&gt;</i></dd>
   </dl>
   <input type="submit" name="send" value="Fortfahren" />
  </fieldset>
