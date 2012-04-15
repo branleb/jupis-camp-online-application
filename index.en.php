@@ -128,7 +128,7 @@ if (isset($_REQUEST["check"])) {
 <?php
 } else {
 ?>
-<p>This online application is not valid for minots. If you're a minor or in case you don&apos;t
+<p>This online application is not valid for minors. If you're a minor or in case you don&apos;t
  like to use this online application you should send this
  <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf">
  application</a> by letter or fax.</p>
