@@ -175,12 +175,12 @@ if (isset($_REQUEST["check"])) {
  <fieldset>
   <p>Spezielle Essensw&uuml;nsche:</p>
   <p>
-   <input type="radio" name="ernaehrung" value="alles" <?php if (Util::val_checked("ernaehrung", "alles")) { echo "checked=\"checked\""; } ?> /> Alles
-   <input type="radio" name="ernaehrung" value="vegi" <?php if (Util::val_checked("ernaehrung", "vegi")) { echo "checked=\"checked\""; } ?> /> Vegetarisch
-   <input type="radio" name="ernaehrung" value="vegan" <?php if (Util::val_checked("ernaehrung", "vegan")) { echo "checked=\"checked\""; } ?> /> Vegan
+   <input type="radio" name="ernaehrung" value="alles" id="alles" <?php if (Util::val_checked("ernaehrung", "alles")) { echo "checked=\"checked\""; } ?> /> <label for="alles">Alles</label>
+   <input type="radio" name="ernaehrung" value="vegi" id="vegi" <?php if (Util::val_checked("ernaehrung", "vegi")) { echo "checked=\"checked\""; } ?> /> <label for="vegi">Vegetarisch</label>
+   <input type="radio" name="ernaehrung" value="vegan" id="vegan" <?php if (Util::val_checked("ernaehrung", "vegan")) { echo "checked=\"checked\""; } ?> /> <label for="vegan">Vegan</label>
   </p>
   <p>
-   <input type="checkbox" name="unvertraeglichkeiten" <?php if (Util::val_checked("unvertraeglichkeiten")) { echo "checked=\"checked\""; } ?> />Lebensmittelunvertr&auml;glichkeiten:
+   <input type="checkbox" name="unvertraeglichkeiten" id="unvtr" <?php if (Util::val_checked("unvertraeglichkeiten")) { echo "checked=\"checked\""; } ?> /> <label for="unvtr">Lebensmittelunvertr&auml;glichkeiten:</label>
    <input type="text" name="unvertraeglichkeiten2" value="<?php echo Util::val("unvertraeglichkeiten2"); ?>" size="40" />
   </p>
   <p>Bekannte Allergien:</p>
