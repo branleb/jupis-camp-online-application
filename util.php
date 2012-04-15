@@ -31,7 +31,7 @@ class Util
 
 	public static function val($v) {
 		if (isset($_POST["send"]) and isset($_POST[$v])) {
-			return iconv("UTF8", "ISO-8859-1", stripslashes($_POST[$v]));
+			return stripslashes($_POST[$v]);
 		}
 		return "";
 	}
