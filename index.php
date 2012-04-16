@@ -158,8 +158,9 @@ if (isset($_REQUEST["check"])) {
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
   <p>zum Camp der Jungen Piraten 2012 in 49377 Vechta (Niedersachsen) vom 5. bis zum
-   12. August verbindlich an. Die Campteilnahme kostet 75 Euro. In diesem Preis enthalten
-   sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser,
+   12. August verbindlich an. August verbindlich an. Die Campteilnahme kostet 95 Euro,
+   für (F&ouml;rder-)Mitglieder der Jungen Piraten sowie für (Junge) Piraten aus dem Ausland
+   kostet es nur 75 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser,
    Kaffee und Tee. Weitere nichtalkoholische Getr&auml;nke sind vor Ort zum Selbstkostenpreis zu
    erwerben. Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
    Risiko.</p>
@@ -186,8 +187,8 @@ if (isset($_REQUEST["check"])) {
   <p>Bekannte Allergien:</p>
   <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
   <p>Mir ist bewusst, dass bei einer Stornierung der Campteilnahme 25 % des
-   Teilnahmebeitrags (18,75 &euro;) f&auml;llig werden. Bei einer Stornierung weniger als 5 Tage vor
-   Campbeginn werden 75 % (56,25 &euro;) f&auml;llig.</p>
+   Teilnahmebeitrags f&auml;llig werden. Bei einer Stornierung weniger als 5 Tage vor
+   Campbeginn werden 75 % f&auml;llig.</p>
   <p>Au&szlig;erdem ist mir bewusst, dass ich<!-- / mein Kind -->, sofern ich mich<!-- / es sich --> mehrfach den
    Anweisungen des Aufsichtspersonals widersetze<!-- / widersetzt --> und die Campordnung
    mutwillig st&ouml;re<!-- / st&ouml;rt -->, auf eigene Kosten nach Hause geschickt werden kann.<br />
@@ -198,7 +199,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
   -->
-  <p>Den Teilnahmebeitrag von 75 &euro; &uuml;berweise ich bis zum 5. Juli 2012 auf folgendes Konto:</p>
+  <p>Den Teilnahmebeitrag von 95 &euro; / 75 &euro; &uuml;berweise ich bis zum 5. Juli 2012 auf folgendes Konto:</p>
   <dl class="konto">
    <dt>Kontoinhaber:</dt>
    <dd>Junge Piraten</dd>

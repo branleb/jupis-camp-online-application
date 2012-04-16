@@ -158,7 +158,9 @@ if (isset($_REQUEST["check"])) {
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
   <p>for Junge Piraten Camp 2011 in 49377 Vechta (Lower Saxony) from August 5<sup>th</sup> to 12<sup>th</sup>.
-   Participation fee is 75 &euro;, including room and board (breakfast, lunch, dinner as well as water, coffee &amp; tea).
+   Participation fee is 75 Euro for (Supporting-)Members of Junge Piraten e.V. and (young)
+   Foreign Pirates and 95 Euro for others, including room and board (breakfast, lunch,
+   dinner as well as water, coffee &amp; tea).
    Other non-alcoholic drinks can be purchased at the campsite at cost price. Travel to and from has to be paid
    individually by the attendees.</p>
   <p>In case of emergency please contact:</p>
@@ -183,8 +185,8 @@ if (isset($_REQUEST["check"])) {
   </p>
   <p>Known Allergies:</p>
   <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
-  <p>I am aware that there is a cancellation fee of 25% of the original participation cost (18,75 &euro;),
-   which will rise to 75% (56,25 &euro;) in case of rescession five days or less prior to begin.
+  <p>I am aware that there is a cancellation fee of 25% of the original participation cost,
+   which will rise to 75% in case of rescession five days or less prior to begin.
 	</p>
 
 	<p>
@@ -196,7 +198,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> My child is allowed to swim without supervision
   -->
-  <p>Please transfer the application fee of 75€ to the following bank account until June 5<sup>th</sup> 2012:</p>
+  <p>Please transfer the application fee of 95 &euro; / 75 &euro; to the following bank account until June 5<sup>th</sup> 2012:</p>
   <dl class="konto">
    <dt>Account Holder:</dt>
    <dd>Junge Piraten</dd>
