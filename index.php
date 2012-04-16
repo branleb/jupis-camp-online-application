@@ -100,18 +100,10 @@ header("Content-Type: text/html; charset=utf-8");
 <html>
 <head>
 <title>Anmeldung zum JuPi-Camp 2012</title>
-<style type="text/css">
-body {font-family:sans-serif; margin:15px; background:gray;}
-fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
-#logo {float:right; margin:20px;}
-dt {float:left;}
-dd {margin-left:200px; margin-bottom:15px;}
-.konto dd {margin-bottom:0px;}
-.error {margin: 0px auto 20px auto; color:#bb0000; background:white; border:5px solid #bb0000; width:900px;}
-body>p {background:white; width:900px; margin: 0px auto 20px auto; border:2px solid black;}
-</style>
+<link href="style.css" rel="stylesheet">
 </head>
 <body>
+	<div class="container">
 <?php
 if (false) {
 ?>
@@ -120,42 +112,42 @@ if (false) {
 }
 if (isset($_REQUEST["check"])) {
 ?>
-<p>Bitte kontrolliere die <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">erzeugte Anmeldung</a> auf Fehler und <a href="?mail">fahre fort</a>.</p>
+<div class="alert alert-info"><h4 class="alert-heading">Du hast es fast geschafft:</h4>Bitte kontrolliere die <a href="temp/<?php echo $_SESSION["rand"]; ?>.pdf">erzeugte Anmeldung</a> auf Fehler und <a href="?mail">fahre fort</a>.</div>
 <?php
 } else if (isset($_REQUEST["finished"])) {
 ?>
-<p>Deine Anmeldung wurde eingereicht. Du wirst eine Anmeldebest&auml;tigung erhalten, sobald deine Anmeldung bearbeitet wird. Wir sehen uns im Sommer!</p>
+<div class="alert alert-success"><h4>Anmeldung abgeschlossen!</h4>Deine Anmeldung wurde eingereicht. Du wirst eine Anmeldebest&auml;tigung erhalten, sobald deine Anmeldung bearbeitet wird. Wir sehen uns im Sommer!</div>
 <?php
 } else {
 ?>
-<p>Diese Online-Anmeldung gilt nur f&uuml;r vollj&auml;hrige Camp-Teilnehmer. Solltest du 
+<div class="alert alert-info"><h4 class="alert-heading">Hinweis:</h4><p>Diese Online-Anmeldung gilt nur f&uuml;r vollj&auml;hrige Camp-Teilnehmer. Solltest du 
  minderj&auml;hrig sein oder die Online-Anmeldung nicht benutzen wollen, verschicke die
  <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf">
- Anmeldung</a> als Brief oder Fax.</p>
+ Anmeldung</a> als Brief oder Fax.</p></div>
 <?php
 	foreach (Util::get_errors() as $err) {
-		echo "<div class=\"error\">" . $err . "</div>";
+		echo "<div class=\"alert alert-error\"><h4 class=\"alert-heading\">Fehler:</h4>" . $err . "</div>";
 	}
 ?>
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" accept-charset="utf-8">
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" accept-charset="utf-8" class="well">
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
   <h1>Junge Piraten</h1>
-  <p>Anmeldung zum Camp 2012</p>
+  <h3>Anmeldung zum Camp 2012</h3>
   <p>Hiermit melde ich mich <!-- / mein Kind --></p>
   <dl>
    <dt>Name:</dt>
-   <dd><input type="text" name="name" value="<?php echo Util::val("name"); ?>" size="20" /></dd>
+   <dd><input class="input-xlarge" type="text" name="name" value="<?php echo Util::val("name"); ?>" size="20" /></dd>
    <dt>Nick:</dt>
-   <dd><input type="text" name="nick" value="<?php echo Util::val("nick"); ?>" size="20" /></dd>
+   <dd><input class="input-xlarge" type="text" name="nick" value="<?php echo Util::val("nick"); ?>" size="20" /></dd>
    <dt>Anschrift:</dt>
-   <dd><input type="text" name="anschrift" value="<?php echo Util::val("anschrift"); ?>" size="40" /></dd>
+   <dd><input class="input-xlarge" type="text" name="anschrift" value="<?php echo Util::val("anschrift"); ?>" size="40" /></dd>
    <dt>Wohnort:</dt>
-   <dd><input type="text" name="wohnort" value="<?php echo Util::val("wohnort"); ?>" size="40" /></dd>
+   <dd><input class="input-xlarge" type="text" name="wohnort" value="<?php echo Util::val("wohnort"); ?>" size="40" /></dd>
    <dt>Mailadresse:</dt>
-   <dd><input type="text" name="mailadresse" value="<?php echo Util::val("mailadresse"); ?>" size="40" /></dd>
+   <dd><input class="input-xlarge" type="text" name="mailadresse" value="<?php echo Util::val("mailadresse"); ?>" size="40" /></dd>
    <dt>Geburtsdatum:</dt>
-   <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
+   <dd><input class="input-xlarge" type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
   <p>zum Camp der Jungen Piraten 2012 in 49377 Vechta (Niedersachsen) vom 5. bis zum
    12. August verbindlich an. Die Campteilnahme kostet 75 Euro. In diesem Preis enthalten
@@ -166,14 +158,14 @@ if (isset($_REQUEST["check"])) {
   <p>Im Notfall soll</p>
   <dl>
    <dt>Name:</dt>
-   <dd><input type="text" name="notfallname" value="<?php echo Util::val("notfallname"); ?>" size="40" /></dd>
+   <dd><input class="input-xlarge" type="text" name="notfallname" value="<?php echo Util::val("notfallname"); ?>" size="40" /></dd>
    <dt>Telefonnummer:</dt>
-   <dd><input type="text" name="notfallnummer" value="<?php echo Util::val("notfallnummer"); ?>" size="40" /></dd>
+   <dd><input class="input-xlarge" type="text" name="notfallnummer" value="<?php echo Util::val("notfallnummer"); ?>" size="40" /></dd>
   </dl>
   <p>informiert werden.</p>
  </fieldset>
  <fieldset>
-  <p>Spezielle Essensw&uuml;nsche:</p>
+  <h4>Spezielle Essensw&uuml;nsche:</h4>
   <p>
    <input type="radio" name="ernaehrung" value="alles" id="alles" <?php if (Util::val_checked("ernaehrung", "alles")) { echo "checked=\"checked\""; } ?> /> <label for="alles">Alles</label>
    <input type="radio" name="ernaehrung" value="vegi" id="vegi" <?php if (Util::val_checked("ernaehrung", "vegi")) { echo "checked=\"checked\""; } ?> /> <label for="vegi">Vegetarisch</label>
@@ -181,10 +173,10 @@ if (isset($_REQUEST["check"])) {
   </p>
   <p>
    <input type="checkbox" name="unvertraeglichkeiten" id="unvtr" <?php if (Util::val_checked("unvertraeglichkeiten")) { echo "checked=\"checked\""; } ?> /> <label for="unvtr">Lebensmittelunvertr&auml;glichkeiten:</label>
-   <input type="text" name="unvertraeglichkeiten2" value="<?php echo Util::val("unvertraeglichkeiten2"); ?>" size="40" />
+   <input class="input-xlarge" type="text" name="unvertraeglichkeiten2" value="<?php echo Util::val("unvertraeglichkeiten2"); ?>" size="40" />
   </p>
-  <p>Bekannte Allergien:</p>
-  <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
+  <h4>Bekannte Allergien:</h4>
+  <input class="input-xlarge" type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
   <p>Mir ist bewusst, dass bei einer Stornierung der Campteilnahme 25 % des
    Teilnahmebeitrags (18,75 &euro;) f&auml;llig werden. Bei einer Stornierung weniger als 5 Tage vor
    Campbeginn werden 75 % (56,25 &euro;) f&auml;llig.</p>
@@ -193,27 +185,25 @@ if (isset($_REQUEST["check"])) {
    mutwillig st&ouml;re<!-- / st&ouml;rt -->, auf eigene Kosten nach Hause geschickt werden kann.<br />
    Aus dem Ausschlu&szlig; w&auml;hrend des Camps ergibt sich kein R&uuml;ckzahlungsanspruch des
    Teilnahmebeitrags.</p>
-  <p>Weitere Anmerkungen:</p>
-  <textarea name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT, "UTF-8"); ?></textarea>
+  <h4>Weitere Anmerkungen:</h4>
+  <textarea class="input-xlarge" name="anmerkungen" rows="5" cols="60"><?php echo htmlentities(Util::val("anmerkungen"), ENT_COMPAT, "UTF-8"); ?></textarea>
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
   -->
   <p>Den Teilnahmebeitrag von 75 &euro; &uuml;berweise ich bis zum 5. Juli 2012 auf folgendes Konto:</p>
-  <dl class="konto">
-   <dt>Kontoinhaber:</dt>
-   <dd>Junge Piraten</dd>
-   <dt>Kontonummer:</dt>
-   <dd>6016506900</dd>
-   <dt>Bank:</dt>
-   <dd>GLS Gemeinschaftsbank</dd>
-   <dt>Bankleitzahl:</dt>
-   <dd>43060967</dd>
-   <dt>&Uuml;berweisungszweck:</dt>
-   <dd>JuPi-Camp 2012 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
-  </dl>
-  <input type="submit" name="send" value="Fortfahren" />
+  <div class="konto">
+   <p>Kontoinhaber: Junge Piraten</p>
+   <p>Kontonummer: 6016506900</p>
+   <p>Bank: GLS Gemeinschaftsbank</p>
+   <p>Bankleitzahl: 43060967</p>
+   <p>&Uuml;berweisungszweck: JuPi-Camp 2012 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></p>
+  </div>
+  <div class="form-actions">
+  <input type="submit" name="send" value="Fortfahren" class="btn btn-primary btn-large" />
+  </div>
  </fieldset>
 </form>
+</div>
 </body>
 </html>
 <?php
