@@ -58,7 +58,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
 		file_put_contents("temp/" . $rand . ".fdf", Util::create_fdf($fdf, $fdf_opt));
-		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Application.pdf"));
+		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Application.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
 		$_SESSION["data"] = $fdf;
@@ -99,7 +99,7 @@ header("Content-Type: text/html; charset=utf-8");
 ?>
 <html>
 <head>
-<title>Application for JuPi-Camp 2012</title>
+<title>Application for JuPi-Wintercamp 2013</title>
 <style type="text/css">
 body {font-family:sans-serif; margin:15px; background:gray;}
 fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
@@ -130,7 +130,7 @@ if (isset($_REQUEST["check"])) {
 ?>
 <p>This online application is not valid for minors. If you're a minor or in case you don&apos;t
  like to use this online application you should send this
- <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Application.pdf">
+ <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Application.pdf">
  application</a> by letter or fax.</p>
 <?php
 	foreach (Util::get_errors() as $err) {
@@ -141,7 +141,7 @@ if (isset($_REQUEST["check"])) {
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
   <h1>Junge Piraten</h1>
-  <p>Application for Camp 2012</p>
+  <p>Application for Wintercamp 2013</p>
   <p>I hereby bindingly register myself<!-- / mein Kind --></p>
   <dl>
    <dt>Full Name:</dt>
@@ -157,11 +157,10 @@ if (isset($_REQUEST["check"])) {
    <dt>Date of Birth:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>for Junge Piraten Camp 2011 in 49377 Vechta (Lower Saxony) from August 5<sup>th</sup> to 12<sup>th</sup>.
-   Participation fee is 75 Euro for (Supporting-)Members of Junge Piraten e.V. and (young)
-   Foreign Pirates and 95 Euro for others, including room and board (breakfast, lunch,
-   dinner as well as water, coffee &amp; tea).
-   Other non-alcoholic drinks can be purchased at the campsite at cost price. Travel to and from has to be paid
+  <p>for Junge Piraten Winteramp 2013 in 59821 Arnsberg (Northrhine-Westhalia) from March 22<sup>nd</sup> to 26<sup>th</sup>.
+   Participation fee is 95 Euro for (Supporting-)Members of Junge Piraten e.V. and (young)
+   Foreign Pirates and 115 Euro for others, including room and board (breakfast, lunch,
+   dinner as well as water and apple juice). Travel to and from has to be paid
    individually by the attendees.</p>
   <p>In case of emergency please contact:</p>
   <dl>
@@ -186,7 +185,7 @@ if (isset($_REQUEST["check"])) {
   <p>Known Allergies:</p>
   <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
   <p>I am aware that there is a cancellation fee of 25% of the original participation cost,
-   which will rise to 75% in case of rescession five days or less prior to begin.
+   which will rise to 75% in case of rescession 30 days or less prior to begin.
 	</p>
 
 	<p>
@@ -198,7 +197,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> My child is allowed to swim without supervision
   -->
-  <p>Please transfer the application fee of 95 &euro; / 75 &euro; to the following bank account until June 5<sup>th</sup> 2012:</p>
+  <p>Please transfer the application fee of 95 &euro; / 115 &euro; to the following bank account until February 12<sup>th</sup> 2013:</p>
   <dl class="konto">
    <dt>Account Holder:</dt>
    <dd>Junge Piraten</dd>
@@ -209,7 +208,7 @@ if (isset($_REQUEST["check"])) {
    <dt>BIC:</dt>
    <dd>GENODEM1GLS</dd>
    <dt>Reason for Payment:</dt>
-   <dd>JuPi-Camp <i>&lt;family name&gt;</i>, <i>&lt;given name&gt;</i></dd>
+   <dd>JuPi-Wintercamp 2013<i>&lt;family name&gt;</i>, <i>&lt;given name&gt;</i></dd>
   </dl>
   <input type="submit" name="send" value="Fortfahren" />
  </fieldset>

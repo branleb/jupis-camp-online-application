@@ -58,7 +58,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
 		file_put_contents("temp/" . $rand . ".fdf", Util::create_fdf($fdf, $fdf_opt));
-		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf"));
+		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Anmeldung.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
 		$_SESSION["data"] = $fdf;
@@ -99,7 +99,7 @@ header("Content-Type: text/html; charset=utf-8");
 ?>
 <html>
 <head>
-<title>Anmeldung zum JuPi-Camp 2012</title>
+<title>Anmeldung zum JuPi-Wintercamp 2013</title>
 <style type="text/css">
 body {font-family:sans-serif; margin:15px; background:gray;}
 fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
@@ -130,7 +130,7 @@ if (isset($_REQUEST["check"])) {
 ?>
 <p>Diese Online-Anmeldung gilt nur f&uuml;r vollj&auml;hrige Camp-Teilnehmer. Solltest du 
  minderj&auml;hrig sein oder die Online-Anmeldung nicht benutzen wollen, verschicke die
- <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2012-Anmeldung.pdf">
+ <a href="//wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Anmeldung.pdf">
  Anmeldung</a> als Brief oder Fax.</p>
 <?php
 	foreach (Util::get_errors() as $err) {
@@ -141,7 +141,7 @@ if (isset($_REQUEST["check"])) {
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
   <h1>Junge Piraten</h1>
-  <p>Anmeldung zum Camp 2012</p>
+  <p>Anmeldung zum Wintercamp 2013</p>
   <p>Hiermit melde ich mich <!-- / mein Kind --></p>
   <dl>
    <dt>Name:</dt>
@@ -157,12 +157,11 @@ if (isset($_REQUEST["check"])) {
    <dt>Geburtsdatum:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>zum Camp der Jungen Piraten 2012 in 49377 Vechta (Niedersachsen) vom 5. bis zum
-   12. August verbindlich an. August verbindlich an. Die Campteilnahme kostet 95 Euro,
+  <p>zum Camp der Jungen Piraten 2013 in 59821 Arnsberg (Northrhine-Westhalia) vom 22. bis zum
+   16. März verbindlich an. Die Campteilnahme kostet 115 Euro,
    für (F&ouml;rder-)Mitglieder der Jungen Piraten sowie für (Junge) Piraten aus dem Ausland
-   kostet es nur 75 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser,
-   Kaffee und Tee. Weitere nichtalkoholische Getr&auml;nke sind vor Ort zum Selbstkostenpreis zu
-   erwerben. Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
+   kostet es nur 95 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser und Apfelschorle.
+   Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
    Risiko.</p>
   <p>Im Notfall soll</p>
   <dl>
@@ -187,7 +186,7 @@ if (isset($_REQUEST["check"])) {
   <p>Bekannte Allergien:</p>
   <input type="text" name="allergien" value="<?php echo Util::val("allergien"); ?>" size="60" />
   <p>Mir ist bewusst, dass bei einer Stornierung der Campteilnahme 25 % des
-   Teilnahmebeitrags f&auml;llig werden. Bei einer Stornierung weniger als 5 Tage vor
+   Teilnahmebeitrags f&auml;llig werden. Bei einer Stornierung weniger als 30 Tage vor
    Campbeginn werden 75 % f&auml;llig.</p>
   <p>Au&szlig;erdem ist mir bewusst, dass ich<!-- / mein Kind -->, sofern ich mich<!-- / es sich --> mehrfach den
    Anweisungen des Aufsichtspersonals widersetze<!-- / widersetzt --> und die Campordnung
@@ -199,7 +198,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
   -->
-  <p>Den Teilnahmebeitrag von 95 &euro; / 75 &euro; &uuml;berweise ich bis zum 5. Juli 2012 auf folgendes Konto:</p>
+  <p>Den Teilnahmebeitrag von 95 &euro; / 115 &euro; &uuml;berweise ich bis zum 12. Februar 2013 auf folgendes Konto:</p>
   <dl class="konto">
    <dt>Kontoinhaber:</dt>
    <dd>Junge Piraten</dd>
@@ -210,7 +209,7 @@ if (isset($_REQUEST["check"])) {
    <dt>Bankleitzahl:</dt>
    <dd>43060967</dd>
    <dt>&Uuml;berweisungszweck:</dt>
-   <dd>JuPi-Camp 2012 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
+   <dd>JuPi-Wintercamp 2013 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
   </dl>
   <input type="submit" name="send" value="Fortfahren" />
  </fieldset>
