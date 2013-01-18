@@ -116,7 +116,7 @@ if (isset($_REQUEST["check"])) {
 <?php
 } else if (isset($_REQUEST["finished"])) {
 ?>
-<p>Deine Anmeldung wurde eingereicht. Du wirst eine Anmeldebest&auml;tigung erhalten, sobald deine Anmeldung bearbeitet wird. Wir sehen uns im Sommer!</p>
+<p>Deine Anmeldung wurde eingereicht. Du wirst eine Anmeldebest&auml;tigung erhalten, sobald deine Anmeldung bearbeitet wird. Wir sehen uns auf dem Camp!</p>
 <?php
 } else {
 ?>
@@ -149,7 +149,7 @@ if (isset($_REQUEST["check"])) {
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
   <p>zum Camp der Jungen Piraten 2013 in 59821 Arnsberg (Nordrhein-Westfalen) vom 22. bis zum
-   16. März verbindlich an. Die Campteilnahme kostet 115 Euro,
+   26. März verbindlich an. Die Campteilnahme kostet 115 Euro,
    für (F&ouml;rder-)Mitglieder der Jungen Piraten sowie für (Junge) Piraten aus dem Ausland
    kostet es nur 95 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser und Apfelschorle.
    Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
