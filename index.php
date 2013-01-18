@@ -98,20 +98,12 @@ if (isset($_REQUEST["mail"])) {
 header("Content-Type: text/html; charset=utf-8");
 ?>
 <html>
-<head>
-<title>Anmeldung zum JuPi-Wintercamp 2013</title>
-<style type="text/css">
-body {font-family:sans-serif; margin:15px; background:gray;}
-fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
-#logo {float:right; margin:20px;}
-dt {float:left;}
-dd {margin-left:200px; margin-bottom:15px;}
-.konto dd {margin-bottom:0px;}
-.error {margin: 0px auto 20px auto; color:#bb0000; background:white; border:5px solid #bb0000; width:900px;}
-body>p {background:white; width:900px; margin: 0px auto 20px auto; border:2px solid black;}
-</style>
-</head>
-<body>
+  <head>
+    <title>Anmeldung zum JuPi-Wintercamp 2013</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' />
+    <link rel='stylesheet' href='main.css' />
+  </head>
+  <body>
 <?php
 if (false) {
 ?>
@@ -140,8 +132,7 @@ if (isset($_REQUEST["check"])) {
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" accept-charset="utf-8">
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
-  <h1>Junge Piraten</h1>
-  <p>Anmeldung zum Wintercamp 2013</p>
+  <h1>Anmeldung zum Wintercamp 2013</h1>
   <p>Hiermit melde ich mich <!-- / mein Kind --></p>
   <dl>
    <dt>Name:</dt>
@@ -157,7 +148,7 @@ if (isset($_REQUEST["check"])) {
    <dt>Geburtsdatum:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>zum Camp der Jungen Piraten 2013 in 59821 Arnsberg (Northrhine-Westhalia) vom 22. bis zum
+  <p>zum Camp der Jungen Piraten 2013 in 59821 Arnsberg (Nordrhein-Westfalen) vom 22. bis zum
    16. März verbindlich an. Die Campteilnahme kostet 115 Euro,
    für (F&ouml;rder-)Mitglieder der Jungen Piraten sowie für (Junge) Piraten aus dem Ausland
    kostet es nur 95 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser und Apfelschorle.

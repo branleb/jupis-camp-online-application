@@ -100,16 +100,8 @@ header("Content-Type: text/html; charset=utf-8");
 <html>
 <head>
 <title>Application for JuPi-Wintercamp 2013</title>
-<style type="text/css">
-body {font-family:sans-serif; margin:15px; background:gray;}
-fieldset {border:2px solid black; width: 900px; margin:0px auto 20px auto; background:white;}
-#logo {float:right; margin:20px;}
-dt {float:left;}
-dd {margin-left:200px; margin-bottom:15px;}
-.konto dd {margin-bottom:0px;}
-.error {margin: 0px auto 20px auto; color:#bb0000; background:white; border:5px solid #bb0000; width:900px;}
-body>p {background:white; width:900px; margin: 0px auto 20px auto; border:2px solid black;}
-</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700' />
+<link rel='stylesheet' href='main.css' />
 </head>
 <body>
 <?php
@@ -140,8 +132,7 @@ if (isset($_REQUEST["check"])) {
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" accept-charset="utf-8">
  <fieldset>
   <img src="//www.junge-piraten.de/logo.png" id="logo" />
-  <h1>Junge Piraten</h1>
-  <p>Application for Wintercamp 2013</p>
+  <h1>Application for Wintercamp 2013</h1>
   <p>I hereby bindingly register myself<!-- / mein Kind --></p>
   <dl>
    <dt>Full Name:</dt>
