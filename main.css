@@ -1,0 +1,56 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	margin:15px;
+	background: #046D8B;
+
+	color: #242424;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+fieldset {
+	border:1px solid #ccc;
+	max-width: 900px;
+	margin:0px auto 20px auto;
+	padding: 8px 15px;
+	background:white;
+}
+
+#logo {
+	float:right;
+	margin:20px;
+}
+
+dt {
+	float:left;
+}
+
+dd {
+	margin-left:200px;
+	margin-bottom:15px;
+}
+
+.konto dd {
+	margin-bottom:0px;
+}
+
+.error {
+	margin: 0px auto 20px auto;
+	color:#bb0000;
+	background:white;
+	border:5px solid #bb0000;
+	width:900px;
+}
+
+body>p {
+	background:white;
+	max-width:900px;
+	margin: 0px auto 20px auto;
+	border:1px solid #ccc;
+	padding: 8px 15px;
+}
+
+a, a:hover {
+	color: #DE2355;
+	text-decoration: none;
+}
