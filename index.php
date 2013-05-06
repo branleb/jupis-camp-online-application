@@ -58,7 +58,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
 		file_put_contents("temp/" . $rand . ".fdf", Util::create_fdf($fdf, $fdf_opt));
-		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Anmeldung.pdf"));
+		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2013-Anmeldung.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
 		$_SESSION["data"] = $fdf;
@@ -148,10 +148,10 @@ if (isset($_REQUEST["check"])) {
    <dt>Geburtsdatum:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>zum Camp der Jungen Piraten 2013 in 59821 Arnsberg (Nordrhein-Westfalen) vom 22. bis zum
-   26. März verbindlich an. Die Campteilnahme kostet 115 Euro,
+  <p>zum Camp der Jungen Piraten 2013 auf dem Zeltplatz Saalwinkel, Maienwerderweg im Jagen 61, 13599 Berlin vom 25. bis zum
+   31. Juli verbindlich an. Die Campteilnahme kostet 95 Euro,
    für (F&ouml;rder-)Mitglieder der Jungen Piraten sowie für (Junge) Piraten aus dem Ausland
-   kostet es nur 95 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie Wasser und Apfelschorle.
+   kostet es nur 75 Euro. In diesem Preis enthalten sind Unterkunft und Verpflegung (Frühstück, Mittagessen, Abendessen) sowie eine grundlegende Getränkeversorgung.
    Die An- und Abreise zum Camp ist selbst zu finanzieren und erfolgt auf eigenes
    Risiko.</p>
   <p>Im Notfall soll</p>
@@ -189,7 +189,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> Mein Kind darf ohne Aufsicht schwimmen.
   -->
-  <p>Den Teilnahmebeitrag von 95 &euro; / 115 &euro; &uuml;berweise ich bis zum 12. Februar 2013 auf folgendes Konto:</p>
+  <p>Den Teilnahmebeitrag von 75 &euro; / 95 &euro; &uuml;berweise ich bis zum 30. Juni 2013 auf folgendes Konto:</p>
   <dl class="konto">
    <dt>Kontoinhaber:</dt>
    <dd>Junge Piraten</dd>
@@ -200,7 +200,7 @@ if (isset($_REQUEST["check"])) {
    <dt>Bankleitzahl:</dt>
    <dd>43060967</dd>
    <dt>&Uuml;berweisungszweck:</dt>
-   <dd>JuPi-Wintercamp 2013 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
+   <dd>JuPi-Camp 2013 <i>&lt;Teilnehmername&gt;</i>, <i>&lt;Teilnehmervorname&gt;</I></dd>
   </dl>
   <input type="submit" name="send" value="Fortfahren" />
  </fieldset>

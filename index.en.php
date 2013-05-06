@@ -58,7 +58,7 @@ if (isset($_POST["send"])) {
 		$fdf_opt["Lebensmittelunvertr#C3#A4glichkeitCheck"] = ($unvertraeglichkeiten == null) ? "Off" : "Yes";
 		$fdf_opt["DarfSchwimmen"] = $schwimmen ? "Yes" : "Off";
 		file_put_contents("temp/" . $rand . ".fdf", Util::create_fdf($fdf, $fdf_opt));
-		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Wintercamp-2013-Application.pdf"));
+		file_put_contents("temp/vorlage.pdf", file_get_contents("http://wiki.junge-piraten.de/wiki/Spezial:Dateipfad/JuPi-Camp-2013-Application.pdf"));
 		system("pdftk temp/vorlage.pdf fill_form temp/" . $rand . ".fdf output temp/" . $rand . ".pdf flatten");
 		unlink("temp/" . $rand . ".fdf");
 		$_SESSION["data"] = $fdf;
@@ -148,9 +148,9 @@ if (isset($_REQUEST["check"])) {
    <dt>Date of Birth:</dt>
    <dd><input type="text" name="geburtsdatum" value="<?php echo Util::val("geburtsdatum"); ?>" size="20" /></dd>
   </dl>
-  <p>for Junge Piraten Winteramp 2013 in 59821 Arnsberg (Northrhine-Westhalia) from March 22<sup>nd</sup> to 26<sup>th</sup>.
-   Participation fee is 95 Euro for (Supporting-)Members of Junge Piraten e.V. and (young)
-   Foreign Pirates and 115 Euro for others, including room and board (breakfast, lunch,
+  <p>for Junge Piraten Winteramp 2013 in 13599 Berlin from July 25<sup>th</sup> to 31<sup>st</sup>.
+   Participation fee is 75 Euro for (Supporting-)Members of Junge Piraten e.V. and (young)
+   Foreign Pirates and 95 Euro for others, including room and board (breakfast, lunch,
    dinner as well as water and apple juice). Travel to and from has to be paid
    individually by the attendees.</p>
   <p>In case of emergency please contact:</p>
@@ -188,7 +188,7 @@ if (isset($_REQUEST["check"])) {
   <!--
    <input type="checkbox" name="schwimmen" <?php if (Util::val_checked("schwimmen")) { echo "checked=\"checked\""; } ?> /> My child is allowed to swim without supervision
   -->
-  <p>Please transfer the application fee of 95 &euro; / 115 &euro; to the following bank account until February 12<sup>th</sup> 2013:</p>
+  <p>Please transfer the application fee of 75 &euro; / 95 &euro; to the following bank account until June 30<sup>th</sup> 2013:</p>
   <dl class="konto">
    <dt>Account Holder:</dt>
    <dd>Junge Piraten</dd>
@@ -199,9 +199,9 @@ if (isset($_REQUEST["check"])) {
    <dt>BIC:</dt>
    <dd>GENODEM1GLS</dd>
    <dt>Reason for Payment:</dt>
-   <dd>JuPi-Wintercamp 2013<i>&lt;family name&gt;</i>, <i>&lt;given name&gt;</i></dd>
+   <dd>JuPi-Camp 2013<i>&lt;family name&gt;</i>, <i>&lt;given name&gt;</i></dd>
   </dl>
-  <input type="submit" name="send" value="Fortfahren" />
+  <input type="submit" name="send" value="Send" />
  </fieldset>
 </form>
 </body>
